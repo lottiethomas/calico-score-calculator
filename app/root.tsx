@@ -1,7 +1,7 @@
 import {isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration,} from "react-router";
 
 import type {Route} from "./+types/root";
-import "./app.css";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export function Layout({children}: { children: React.ReactNode }) {
     return (
