@@ -2,6 +2,7 @@ import type {Route} from "./+types/home";
 import Cat from "~/components/Cat";
 import {Col, Container, Row} from "react-bootstrap";
 import Scorable from "~/components/Scorable";
+import DesignGoal from "~/components/DesignGoal";
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -22,6 +23,7 @@ export default function Home() {
             <Row>
                 <Col><Cat name={"Default Cat"}/></Col>
                 <Col><Scorable display={<Cat name={"Holly"}/>}/></Col>
+                <Col><DesignGoal image={require('~/assets/three-pairs-goal.png')} description={'Three pairs'}/></Col>
             </Row>
         </Container>
     );
