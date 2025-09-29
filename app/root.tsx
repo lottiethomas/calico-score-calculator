@@ -2,6 +2,7 @@ import {isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration,} 
 
 import type {Route} from "./+types/root";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export function Layout({children}: { children: React.ReactNode }) {
     return (
