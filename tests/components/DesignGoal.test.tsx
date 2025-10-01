@@ -36,8 +36,8 @@ describe('<DesignGoal />', () => {
     test('Either/or achievement button can be selected alone', () => {
         const {getByRole} = render(<DesignGoal image={require("~/assets/three-pairs-goal.png")}
                                                description={"test"}/>)
-        const eitherButton = getByRole('checkbox', {name: 'Colour OR Pattern'});
-        const bothButton = getByRole('checkbox', {name: 'Colour AND Pattern'});
+        const eitherButton = getByRole('radio', {name: 'Colour OR Pattern'});
+        const bothButton = getByRole('radio', {name: 'Colour AND Pattern'});
         fireEvent.click(eitherButton);
         expect(eitherButton).toBeChecked()
         expect(bothButton).not.toBeChecked()
@@ -46,8 +46,8 @@ describe('<DesignGoal />', () => {
     test('Both achievement button can be selected alone', () => {
         const {getByRole} = render(<DesignGoal image={require("~/assets/three-pairs-goal.png")}
                                                description={"test"}/>)
-        const eitherButton = getByRole('checkbox', {name: 'Colour OR Pattern'});
-        const bothButton = getByRole('checkbox', {name: 'Colour AND Pattern'});
+        const eitherButton = getByRole('radio', {name: 'Colour OR Pattern'});
+        const bothButton = getByRole('radio', {name: 'Colour AND Pattern'});
         fireEvent.click(bothButton);
         expect(bothButton).toBeChecked()
         expect(eitherButton).not.toBeChecked()
@@ -56,10 +56,11 @@ describe('<DesignGoal />', () => {
     test('Either/or achievement button can be deselected', () => {
         const {getByRole} = render(<DesignGoal image={require("~/assets/three-pairs-goal.png")}
                                                description={"test"}/>)
-        const eitherButton = getByRole('checkbox', {name: 'Colour OR Pattern'});
-        const bothButton = getByRole('checkbox', {name: 'Colour AND Pattern'});
+        const eitherButton = getByRole('radio', {name: 'Colour OR Pattern'});
+        const bothButton = getByRole('radio', {name: 'Colour AND Pattern'});
+        const clearButton = getByRole('button', {name: 'Clear'});
         fireEvent.click(eitherButton);
-        fireEvent.click(eitherButton);
+        fireEvent.click(clearButton);
         expect(eitherButton).not.toBeChecked()
         expect(bothButton).not.toBeChecked()
     })
@@ -67,10 +68,11 @@ describe('<DesignGoal />', () => {
     test('Both achievement button can be deselected', () => {
         const {getByRole} = render(<DesignGoal image={require("~/assets/three-pairs-goal.png")}
                                                description={"test"}/>)
-        const eitherButton = getByRole('checkbox', {name: 'Colour OR Pattern'});
-        const bothButton = getByRole('checkbox', {name: 'Colour AND Pattern'});
+        const eitherButton = getByRole('radio', {name: 'Colour OR Pattern'});
+        const bothButton = getByRole('radio', {name: 'Colour AND Pattern'});
+        const clearButton = getByRole('button', {name: 'Clear'});
         fireEvent.click(bothButton);
-        fireEvent.click(bothButton);
+        fireEvent.click(clearButton);
         expect(bothButton).not.toBeChecked()
         expect(eitherButton).not.toBeChecked()
     })
