@@ -1,4 +1,4 @@
-import {ButtonGroup, Image, Row, ToggleButton} from "react-bootstrap";
+import {Button, ButtonGroup, Image, Row, ToggleButton} from "react-bootstrap";
 import {useState} from "react";
 
 type DesignGoalProps = {
@@ -16,6 +16,10 @@ const goalImageStyle = {
 const rowStyle = {
     justifyContent: 'center' as const,
     margin: 10
+}
+
+const clearButtonStyle = {
+    maxWidth: '50%' as const,
 }
 
 export default function DesignGoal(props: DesignGoalProps) {
@@ -37,28 +41,28 @@ export default function DesignGoal(props: DesignGoalProps) {
             </Row>
             <Row style={rowStyle}>
                 <ButtonGroup aria-label={'Achievement'}>
-                    {/*Here checkboxes are used as radio buttons, as the two achievements are mutually exclusive.*/}
                     {achievements.map((achievement, idx) => (
                         <ToggleButton key={`achievement-${idx}`}
                                       id={`achievement-${idx}`}
-                                      type={'checkbox'}
+                                      type={'radio'}
                                       data-testid={achievement.testId}
                                       value={achievement.value}
                                       checked={achievementValue === achievement.value}
-                                      onChange={(e) => {
-                                          if (e.currentTarget.value === achievement.value) {
-                                              if (achievementValue === achievement.value) {
-                                                  setAchievement('0')
-                                              } else {
-                                                  setAchievement(e.currentTarget.value)
-                                              }
-                                          }
-                                      }}
+                                      onChange={(e) =>
+                                          setAchievement(e.currentTarget.value)
+                                      }
                                       variant={'outline-primary'}>
                             {achievement.name}
                         </ToggleButton>
                     ))}
                 </ButtonGroup>
+            </Row>
+            <Row style={rowStyle}>
+                <Button variant={'light, outline-light'}
+                        onClick={() => setAchievement('0')}
+                        style={clearButtonStyle}>
+                    Clear
+                </Button>
             </Row>
         </>
     )
